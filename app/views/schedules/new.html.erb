@@ -1,0 +1,6 @@
+<h1>Create a new schedule</h1>
+<%= form_with url: "/schedules", method: :post do |form| %>
+  <%= form.label :title, "Search for:" %>
+  <%= form.text_field :title %>
+  <%= form.submit "Create Schedule" %>
+<% end %>
