@@ -15,74 +15,30 @@
       </div>
       <div class="field is-horizontal">
         <div class="field-label is-normal">
-          <%= form.label :date, "Date ", class: 'label' %>
+          <%= form.label :start, "Start ", class: 'label' %>
         </div>
         <div class="field-body">
-          <div class="select mx-2">
-            <%= form.select :start_time, 
-              [
-                ['From', '-1'],
-                ['12:00am', '0'],
-                ['01:00am', '1'], 
-                ['02:00am', '2'], 
-                ['03:00am', '3'], 
-                ['04:00am', '4'], 
-                ['05:00am', '5'], 
-                ['06:00am', '6'], 
-                ['07:00am', '7'], 
-                ['08:00am', '8'], 
-                ['09:00am', '9'], 
-                ['10:00am', '10'], 
-                ['11:00am', '11'], 
-                ['12:00pm', '12'], 
-                ['01:00pm', '13'], 
-                ['02:00pm', '14'], 
-                ['03:00pm', '15'], 
-                ['04:00pm', '16'], 
-                ['05:00pm', '17'], 
-                ['06:00pm', '18'], 
-                ['07:00pm', '19'], 
-                ['08:00pm', '20'], 
-                ['09:00pm', '21'], 
-                ['10:00pm', '22'], 
-                ['11:00pm', '23']
-            ]
-            %>
-          </div>
-          <div class="select mx-2">
-            <%= form.select :end_time, 
-            [
-              ['To', '-1'],
-              ['12:00am', '0'],
-              ['01:00am', '1'], 
-              ['02:00am', '2'], 
-              ['03:00am', '3'], 
-              ['04:00am', '4'], 
-              ['05:00am', '5'], 
-              ['06:00am', '6'], 
-              ['07:00am', '7'], 
-              ['08:00am', '8'], 
-              ['09:00am', '9'], 
-              ['10:00am', '10'], 
-              ['11:00am', '11'], 
-              ['12:00pm', '12'], 
-              ['01:00pm', '13'], 
-              ['02:00pm', '14'], 
-              ['03:00pm', '15'], 
-              ['04:00pm', '16'], 
-              ['05:00pm', '17'], 
-              ['06:00pm', '18'], 
-              ['07:00pm', '19'], 
-              ['08:00pm', '20'], 
-              ['09:00pm', '21'], 
-              ['10:00pm', '22'], 
-              ['11:00pm', '23']
-          ]
-            %>
+          <div class="field mx-2">
+          <%= form.time_field :start_time, class: 'input' %>
           </div>
           <div class="field">
             <p class="control is-expanded">
-              <%= form.date_field :date, class: 'input', placeholder: 'yyyy/mm/dd' %>
+              <%= form.date_field :start_date, class: 'input', placeholder: 'yyyy/mm/dd' %>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <%= form.label :end, "End ", class: 'label' %>
+        </div>
+        <div class="field-body">
+          <div class="field mx-2">
+            <%= form.time_field :end_time, class: 'input' %>
+          </div>
+          <div class="field">
+            <p class="control is-expanded">
+            <%= form.date_field :end_date, class: 'input', placeholder: 'yyyy/mm/dd' %>
             </p>
           </div>
         </div>
@@ -90,7 +46,7 @@
       <div class="field is-horizontal">
         <div class="field-label"></div>
         <div class="field-body mx-2">
-          <%= form.submit  "Add a new appointment", class: "button" %>
+          <%= form.submit  "Add a new event", class: "button" %>
         </div>
       </div>
   <% end %>

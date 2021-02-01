@@ -1,0 +1,12 @@
+document.body.addEventListener("ajax:success", (event) => {
+  <% if @titleError == "error" %>
+      document.getElementById("title").classList.add("is-danger");
+  <% end %>
+  <% if @dateError == "error" %>
+      document.getElementById("start_date").classList.add("is-danger");
+  <% end %>
+      console.log("failure")
+      document.getElementById("warning").classList.remove("is-hidden")
+      document.getElementById("warning").innerHTML = "A title and start time is required";
+});
+

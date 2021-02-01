@@ -1,0 +1,62 @@
+<div class="modal" id="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Add a new event</p>
+    </header>
+    <section="modal-card-body">
+      <div class="modal-content has-background-white pt-2 pb-2 px-2">
+        <div class="notification is-warning is-hidden ps-0" id="warning"></div>
+          <%= form_with model: @appointment, format: :js, url: '/appointments', local: false do |form| %>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <%= form.label :title, "Title ", class: 'label' %>
+            </div>
+            <div class="field-body mx-2">
+              <div class="field">
+              <%= form.text_field :title, class: 'input', type: 'text', id: 'title', placeholder: 'ssd' %>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <%= form.label :start, "Start ", class: 'label' %>
+            </div>
+            <div class="field-body">
+              <div class="field mx-2">
+              <%= form.time_field :start_time, class: 'input' %>
+              </div>
+              <div class="field">
+                <p class="control is-expanded">
+                  <%= form.date_field :start_date, class: 'input', id: 'start_date', placeholder: 'yyyy/mm/dd' %>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <%= form.label :end, "End ", class: 'label' %>
+            </div>
+            <div class="field-body">
+              <div class="field mx-2">
+                <%= form.time_field :end_time, class: 'input' %>
+              </div>
+              <div class="field">
+                <p class="control is-expanded">
+                <%= form.date_field :end_date, class: 'input', placeholder: 'yyyy/mm/dd' %>
+              </p>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label"></div>
+            <div class="field-body mx-2">
+              <%= form.submit  "Add a new event", class: "button is-primary mr-3" %>
+              <a class="button mx-3" onclick="removeModal()">Cancel</a>
+            </div>
+          </div>
+      <% end %>
+      </div>
+    </section>
+  </div>
+</div>

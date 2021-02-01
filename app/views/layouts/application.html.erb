@@ -3,18 +3,45 @@
   <head>
     <title>SchedulerOnRails</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.js" integrity="sha256-AM67JiNJ27oZIs55VNRBo6vAVVQ1iwg1PDN94mdDZA8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.css" integrity="sha256-ejA/z0dc7D+StbJL/0HAnRG/Xae3yS2gzg0OAnIURC4=" crossorigin="anonymous">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <% if user_signed_in? %>
+      <script>
+        document.addEventListener('turbolinks:load', function() {
+          var calendarEl = document.getElementById('calendar');
+          var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            events: '/showAll',
+            dateClick: function(info) {
+              this.changeView('timeGridDay', info.dateStr)
+            },
+            headerToolbar: {
+              center: 'dayGridMonth timeGridDay timeGridWeek'
+            }
+          });
+          calendar.render();
+        });
 
+      function activateModal() {
+        var element = document.getElementById("modal");
+        element.classList.add("is-active");
+      }
+      function removeModal() {
+        var element = document.getElementById("modal");
+        element.classList.remove("is-active");
+      }
+      </script>
+    <% end %>
+  </head>
   <body>
   <div class="containers.is-fullhd">
     <nav class="navbar has-background-dark" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item has-text-light" href="/home/index">
+        <a class="navbar-item has-text-light" href="/">
           <br>SchedulerOnRails</br>
         </a>
       </div>
