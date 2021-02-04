@@ -1,8 +1,6 @@
-<section class="section">
   <% if user_signed_in? %>
     <a class="button is-primary" onclick="activateModal()">Add Event</a> 
   <div id='calendar'></div>
 <% end %>
-</section>
 <%= render 'appointments/new' %>
 
